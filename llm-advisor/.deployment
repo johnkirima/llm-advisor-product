@@ -1,0 +1,3 @@
+[config]
+# Tell Azure Oryx that the Next.js app is in the nextjs_space/ subdirectory
+PROJECT = nextjs_space
