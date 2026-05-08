@@ -5,6 +5,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/sonner'
 import { ChunkLoadErrorHandler } from '@/components/chunk-load-error-handler'
+import { GoogleAnalytics } from '@/components/google-analytics'
 
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-sans' })
 const jakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-display' })
@@ -13,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mon
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXTAUTH_URL ?? 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://llmadvisor.johnkirima.com'),
   title: 'LLM Advisor — Choose the right AI model for your work',
   description:
     'A decision-support tool for non-developer professionals. Get confident LLM recommendations balanced across quality, reliability, and affordability — in minutes, not hours.',
@@ -59,6 +60,7 @@ export default function RootLayout({
         `}
       </Script>
       <body className={`${dmSans.variable} ${jakartaSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+        <GoogleAnalytics />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
